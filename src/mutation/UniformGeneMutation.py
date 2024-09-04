@@ -2,7 +2,7 @@ from src.mutation.Mutation import Mutation
 from src.genes.Gene import Gene
 import random
 
-class SingleGene(Mutation):
+class UniformGeneMutation(Mutation):
 
     @classmethod
     def mutate(cls, genes:Gene, probability: float) -> Gene | None:
