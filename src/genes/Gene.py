@@ -3,13 +3,21 @@ import numpy as np
 
 def Gene(height,strength,dexterity,intelligence,vigor,constitution):
 
-    def __init__(self,height,strength,dexterity,intelligence,vigor,constitution):
-        self.height = height
-        self.strength = strength
-        self.dexterity = dexterity
-        self.intelligence = intelligence
-        self.vigor = vigor
-        self.constitution = constitution
+    def __init__(self,height,strength,dexterity,intelligence,vigor,constitution,stats:Tuple[float, float, float, float, float, float]):
+        if stats:
+            self.height = stats.height
+            self.strength = stats.strength
+            self.dexterity = stats.dexterity
+            self.intelligence = stats.intelligence
+            self.vigor = stats.vigor
+            self.constitution = stats.constitution
+        else:
+            self.height = height
+            self.strength = strength
+            self.dexterity = dexterity
+            self.intelligence = intelligence
+            self.vigor = vigor
+            self.constitution = constitution
 
     def getHeight(self):
         return self.height
