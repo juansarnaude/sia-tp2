@@ -15,7 +15,7 @@ class Annular(Crossover):
         start_locus = random.randint(0, num_genes - 1)
 
         # Select a random segment length (could range from 1 to the number of genes)
-        segment_length = random.randint(1, num_genes)
+        segment_length = random.randint(0,np.ceil(num_genes/2))
 
         # Create the new genes by swapping the segment around the selected locus
         child_gene_stats1 = list(gene1_stats)
@@ -26,7 +26,7 @@ class Annular(Crossover):
             child_gene_stats1[locus], child_gene_stats2[locus] = child_gene_stats2[locus], child_gene_stats1[locus]
 
         # Create new Gene instances for the children
-        child_gene1 = Gene(tuple(child_gene_stats1))
-        child_gene2 = Gene(tuple(child_gene_stats2))
+        child_gene1 = Gene(child_gene_stats1)
+        child_gene2 = Gene(child_gene_stats2)
 
         return child_gene1, child_gene2
