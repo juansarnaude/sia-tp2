@@ -14,7 +14,8 @@ class Uniform(Crossover):
 
         #TODO revisar
         for i in range(len(gene1_stats) - 1):
-            if random.random() < 0.5:
+            p=random.randint(0,1)
+            if  p < 0.5:
                 child_gene1[i] = gene2_stats[i]
                 child_gene2[i] = gene1_stats[i]
 
