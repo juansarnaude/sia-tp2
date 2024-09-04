@@ -52,6 +52,5 @@ def Gene(height,strength,dexterity,intelligence,vigor,constitution):
     def get_stat_array(self) -> Tuple[float, float, float, float, float, float]:
         return (self.height, self.strength, self.dexterity, self.intelligence, self.vigor, self.constitution)
 
-    #TODO preguntar formula defense
     def getDefenseStat(self):
-        return (getTotalVigor() + self.intelligence) * self.constitution * getDEM()
+        return (getTotalVigor() + getTotalIntelligence()) * getTotalConstitution() * getDEM()
