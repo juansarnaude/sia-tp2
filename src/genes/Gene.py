@@ -1,3 +1,4 @@
+from typing import Tuple
 import numpy as np
 
 def Gene(height,strength,dexterity,intelligence,vigor,constitution):
@@ -40,6 +41,8 @@ def Gene(height,strength,dexterity,intelligence,vigor,constitution):
     def getAttackStat(self):
         return (getTotalDexterity() + getTotalIntelligence()) * getTotalStrength() * getATM()
 
+    def get_stat_array(self) -> Tuple[float, float, float, float, float, float]:
+        return (self.height, self.strength, self.dexterity, self.intelligence, self.vigor, self.constitution)
 
     #TODO preguntar formula defense
     def getDefenseStat(self):
