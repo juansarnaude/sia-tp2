@@ -3,7 +3,7 @@ from src.genes.Gene import Gene
 import random
 
 
-class SingleGene(Mutation):
+class GeneMutation(Mutation):
 
     @classmethod
     def mutate(cls, genes:Gene, probability: float) -> Gene | None:
@@ -20,4 +20,4 @@ class SingleGene(Mutation):
                 base_genes[rand] = random.uniform(1.3, 2.0)
             else:
                 base_genes[rand] = random.uniform(0, 150)
-        return Gene(Tuple(base_genes))
+        return Gene(base_genes)
