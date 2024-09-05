@@ -20,7 +20,7 @@ class Roulette(Select):
         accumulated_relative_fitness=[]
         accumulated_relative_fitness_sum=0
 
-        #We calculate the relative fitness in the acummulated_relative_fitness array
+        #We calculate the acummulated relative fitness in the acummulated_relative_fitness array
         for relative_fitness in relative_fitnesses:
             accumulated_relative_fitness.append(relative_fitness + accumulated_relative_fitness_sum)
             accumulated_relative_fitness_sum += relative_fitness
