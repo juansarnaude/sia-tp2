@@ -54,3 +54,19 @@ def Gene(height,strength,dexterity,intelligence,vigor,constitution):
 
     def getDefenseStat(self):
         return (getTotalVigor() + getTotalIntelligence()) * getTotalConstitution() * getDEM()
+
+    def normalize(self):
+        total_stats = 0
+        total_stats += stats.strength
+        total_stats += stats.dexterity
+        total_stats += stats.intelligence
+        total_stats += stats.vigor
+        total_stats += stats.constitution
+
+        if(max_stats_points < total_stats):
+            normalize_value = max_stats_points / total_stats
+            self.strength = self.strength * normalize_value
+            self.dexterity = self.dexterity * normalize_value
+            self.intelligence = self.intelligence * normalize_value
+            self.vigor = self.vigor * normalize_value
+            self.constitution = self.constitution * normalize_value
