@@ -32,4 +32,7 @@ class MultiGeneMutation(Mutation):
                     base_genes[rand] = random.uniform(1.3, 2.0)
                 else:
                     base_genes[rand] = random.uniform(0, 150)
-        return Gene(base_genes)
+
+        to_return_gene = Gene(base_genes)
+        to_return_gene.normalize()
+        return to_return_gene

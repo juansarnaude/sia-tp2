@@ -3,7 +3,7 @@ import numpy as np
 
 def Gene(height,strength,dexterity,intelligence,vigor,constitution):
 
-    def __init__(self,height,strength,dexterity,intelligence,vigor,constitution,stats:Tuple[float, float, float, float, float, float]):
+    def __init__(self,height,strength,dexterity,intelligence,vigor,constitution,max_stats_points,stats:Tuple[float, float, float, float, float, float]):
         if stats:
             self.height = stats.height
             self.strength = stats.strength
@@ -18,6 +18,7 @@ def Gene(height,strength,dexterity,intelligence,vigor,constitution):
             self.intelligence = intelligence
             self.vigor = vigor
             self.constitution = constitution
+            self.max_stats_points = max_stats_points
 
     def getHeight(self):
         return self.height
@@ -56,15 +57,10 @@ def Gene(height,strength,dexterity,intelligence,vigor,constitution):
         return (getTotalVigor() + getTotalIntelligence()) * getTotalConstitution() * getDEM()
 
     def normalize(self):
-        total_stats = 0
-        total_stats += stats.strength
-        total_stats += stats.dexterity
-        total_stats += stats.intelligence
-        total_stats += stats.vigor
-        total_stats += stats.constitution
+        total_stats=getTotalPoints(self)
 
-        if(max_stats_points < total_stats):
-            normalize_value = max_stats_points / total_stats
+        if(self.max_stats_points < total_stats):
+            normalize_value = self.max_stats_points / total_stats
             self.strength = self.strength * normalize_value
             self.dexterity = self.dexterity * normalize_value
             self.intelligence = self.intelligence * normalize_value
