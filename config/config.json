@@ -1,0 +1,7 @@
+{
+  "population_size": 10,
+  "crossover": "annular",
+  "mutation": "multigene",
+  "uniform_mutation": "non_uniform_gene",
+  "selection": "elite"
+}
