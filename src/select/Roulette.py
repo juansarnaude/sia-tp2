@@ -14,13 +14,13 @@ class Roulette(Select):
             fitness.append(individual.getPerformance())
             sum_fitness += individual.getPerformance()
 
-        #We calculate te relative fitness of every element in the array
+        #We calculate the relative fitness of every element in the array
         relative_fitnesses = [fitness / sum_fitness for fitness in fitness]
 
         accumulated_relative_fitness=[]
         accumulated_relative_fitness_sum=0
 
-        #We calculate te relative fitness in the acummulated_relative_fitness array
+        #We calculate the relative fitness in the acummulated_relative_fitness array
         for relative_fitness in relative_fitnesses:
             accumulated_relative_fitness.append(relative_fitness + accumulated_relative_fitness_sum)
             accumulated_relative_fitness_sum += relative_fitness
