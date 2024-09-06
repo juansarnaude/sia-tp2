@@ -17,7 +17,7 @@ class Structure(Cutoff):
     """
 
     @classmethod
-    def cutoff(cls, old_population:List[List[Individual]], new_population:List[Individual], generations: int, threshold: any) -> bool:
+    def cutoff(cls, old_population:List[List[Individual]], new_population:List[Individual], generations: int, threshold: float) -> bool:
 
         cls.validate_params(generations, threshold)
         
