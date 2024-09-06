@@ -1,15 +1,16 @@
 from abc import ABC, abstractmethod
-
+from src.classes.Individual import Individual
+from typing import List
 
 class Select(ABC):
 
     @classmethod
     @abstractmethod
-    def select(cls, population: [], k: int) -> []:
+    def select(cls, population:List[Individual], k: int) -> List:
         pass
 
     @classmethod
-    def get_accumulated_relative_fitness(cls, population: [], k: int) -> []:
+    def get_accumulated_relative_fitness(cls, population:List[Individual], k: int) -> List:
         fitness = []
         sum_fitness = 0
 

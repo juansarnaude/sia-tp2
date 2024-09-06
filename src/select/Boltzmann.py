@@ -1,6 +1,8 @@
 import random
 
+from typing import List
 from src.select.RouletteABC import RouletteABC
+from src.classes.Individual import Individual
 import math as m
 
 
@@ -14,7 +16,7 @@ class Boltzmann(RouletteABC):
         value = m.exp(i.getPerformance() / T) / avg
         return value
 
-    def select(self, cls, population: [], k: int) -> []:
+    def select(self, cls, population:List[Individual], k: int) -> List:
 
         sum_exp_val = 0
         T = self.tc + (self.t0 - self.tc) * m.exp(-k * self.t)

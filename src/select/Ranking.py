@@ -1,11 +1,12 @@
 import random
 
+from src.classes.Individual import Individual
 from src.select.RouletteABC import RouletteABC
-
+from typing import List
 
 class Ranking(RouletteABC):
 
-    def select(cls, population: [], k: int) -> []:
+    def select(cls, population:List[Individual], k: int) -> List:
         ranking = sorted(population, reverse=False)
         n=len(population)
 

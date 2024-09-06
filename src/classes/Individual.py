@@ -1,6 +1,6 @@
 from abc import ABC,abstractmethod
 
-class BaseStats(ABC):
+class Individual(ABC):
 
     def __init__(self,gene):
         self.gene = gene

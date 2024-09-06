@@ -1,6 +1,6 @@
-import BaseStats
+import src.classes.Individual as Individual
 
-class Mage(BaseStats):
+class Mage(Individual):
 
     #TODO revisar que la suma de probabilidades no da 1 para el mago
     def getPerformance(self):

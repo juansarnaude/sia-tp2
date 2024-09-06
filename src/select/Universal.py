@@ -2,11 +2,12 @@ import random
 
 from src.select.RouletteABC import RouletteABC
 from src.select.Select import Select
-
+from src.classes.Individual import Individual
+from typing import List
 
 class Universal(RouletteABC):
 
-    def select(cls, population: [], k: int) -> []:
+    def select(cls, population:List[Individual], k: int) -> List:
         accumulated_relative_fitness=cls.get_accumulated_relative_fitness(population, k)
 
         rs=[]
