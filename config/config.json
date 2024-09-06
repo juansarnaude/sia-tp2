@@ -1,7 +1,8 @@
 {
   "population_size": 10,
-  "crossover": "annular",
-  "mutation": "multigene",
+  "class": "archer",
+  "crossover": "crossover",
+  "mutation": "multi_gene",
   "uniform_mutation": "non_uniform_gene",
   "selection": "elite"
 }
