@@ -1,8 +1,7 @@
-from abc import ABC,abstractmethod
+from abc import ABC, abstractmethod
 
 class Individual(ABC):
-
-    def __init__(self,gene):
+    def __init__(self, gene):
         self.gene = gene
 
     @abstractmethod

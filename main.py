@@ -1,6 +1,9 @@
 import json
 import sys
 
+from src.classes.PopulationInitializer import PopulationInitializer
+
+
 def get_crossover(crossover_str):
     if crossover_str == "crossover":
         return globals().get('Annular')
@@ -35,7 +38,7 @@ def get_selection(selection_str):
     elif selection_str == "roulette":
         return globals().get('Roulette')
     elif selection_str == "select":
-        return globals().get('Select')
+        return globals().get('src/select')
     else:
         raise ValueError(f"Invalid argument: {selection_str}")
 
@@ -44,11 +47,21 @@ with open(f"{sys.argv[1]}", "r") as config_file:
     config = json.load(config_file)
 
     population_size = config["population_size"]
+    class_type = config["class"]
+
+    population = PopulationInitializer(population_size, class_type)
+
+    '''
+    for ind in population:
+        print(ind.gene)
+        '''
 
     crossover = get_crossover(config["crossover"])
     mutation = get_mutation(config["mutation"])
-    uniform_mutation = get_mutation(config["uniform_mutation"])
+    uniform_mutation = get_uniform_mutation(config["uniform_mutation"])
     selection = get_selection(config["selection"])
+
+
 
 
 

@@ -26,7 +26,7 @@ class Annular(Crossover):
             child_gene_stats1[locus], child_gene_stats2[locus] = child_gene_stats2[locus], child_gene_stats1[locus]
 
         # Create new Gene instances for the children
-        child_gene1 = Gene(child_gene_stats1)
-        child_gene2 = Gene(child_gene_stats2)
+        child_gene1 = Gene(stats=child_gene_stats1)
+        child_gene2 = Gene(stats=child_gene_stats2)
 
         return child_gene1, child_gene2

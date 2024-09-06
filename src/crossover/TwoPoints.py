@@ -20,7 +20,7 @@ class TwoPoints(Crossover):
         child_gene_stats1 = gene1_stats[:first_point] + gene2_stats[first_point:second_point] + gene1_stats[second_point:]
         child_gene_stats2 = gene2_stats[:first_point] + gene1_stats[first_point:second_point] + gene2_stats[second_point:]
 
-        child_gene1 = Gene(child_gene_stats1)
-        child_gene2 = Gene(child_gene_stats2)
+        child_gene1 = Gene(stats=child_gene_stats1)
+        child_gene2 = Gene(stats=child_gene_stats2)
 
         return child_gene1, child_gene2
