@@ -6,6 +6,7 @@ from src.classes.Individual import Individual
 
 class ProbabilisticTournament(Select):
 
+    @classmethod
     def select(cls, population:List[Individual], k: int) -> List:
         selected=[]
 

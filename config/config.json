@@ -1,6 +1,6 @@
 {
   "population_size": 10,
-  "character": "archer",
+  "character": "warden",
   "crossover": "annular",
   "mutation": "multi_gene",
   "uniform_mutation": "non_uniform_gene",

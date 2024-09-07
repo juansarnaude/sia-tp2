@@ -46,7 +46,10 @@ while not config.cutoff(generations, current_population, len(generations), confi
 
     generations.append(current_population)
 
-print(current_population)
+for i,generation in enumerate(generations):
+    print("Generation " + str(i) + ": ")
+    for individual in generation:
+        print(individual)
 
     
 

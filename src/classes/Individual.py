@@ -25,4 +25,4 @@ class Individual(ABC):
         return self.fitness >= other.fitness
 
     def __str__(self) -> str:
-        return f'individual: {self.fitness}'
+        return f'fitness: {self.fitness} - genes: {self.gene}'

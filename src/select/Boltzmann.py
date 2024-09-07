@@ -16,6 +16,7 @@ class Boltzmann(RouletteABC):
         value = m.exp(i.getPerformance() / T) / avg
         return value
 
+    @classmethod
     def select(cls, population:List[Individual], k: int) -> List:
 
         sum_exp_val = 0

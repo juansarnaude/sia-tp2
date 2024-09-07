@@ -7,7 +7,7 @@ from src.select import Select
 
 
 class Bias(Replace):
-
+    @classmethod
     def replace(cls, last_gen: List[Individual],new_gen: List[Individual], method_3, method_4, n:int, b: float) -> List[Individual]:
         k=len(new_gen)
         to_return=[]

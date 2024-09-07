@@ -6,6 +6,7 @@ from typing import List
 
 class Ranking(RouletteABC):
 
+    @classmethod
     def select(cls, population:List[Individual], k: int) -> List:
         ranking = sorted(population, reverse=False)
         n=len(population)

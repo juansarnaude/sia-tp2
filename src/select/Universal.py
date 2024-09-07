@@ -7,6 +7,7 @@ from typing import List
 
 class Universal(RouletteABC):
 
+    @classmethod
     def select(cls, population:List[Individual], k: int) -> List:
         accumulated_relative_fitness=cls.get_accumulated_relative_fitness(population, k)
 

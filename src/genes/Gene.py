@@ -26,16 +26,17 @@ class Gene:
             self.constitution = stats[5]
 
     def __str__(self):
-        return ', '.join(map(str, self.get_all_atributes()))
+        attributes = self.get_all_atributes()
+        return ', '.join([f"{name}={value}" for name, value in attributes])
 
     def get_all_atributes(self):
         attributes = [
-            self.height,
-            self.strength,
-            self.dexterity,
-            self.intelligence,
-            self.vigor,
-            self.constitution
+            ("height", self.height),
+            ("strength", self.strength),
+            ("dexterity", self.dexterity),
+            ("intelligence", self.intelligence),
+            ("vigor", self.vigor),
+            ("constitution", self.constitution)
         ]
         return attributes
 
