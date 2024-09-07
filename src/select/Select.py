@@ -6,7 +6,7 @@ class Select(ABC):
 
     @classmethod
     @abstractmethod
-    def select(cls, population:List[Individual], k: int) -> List:
+    def select(cls, population:List[Individual], k: int) -> List[Individual]:
         pass
 
     @classmethod

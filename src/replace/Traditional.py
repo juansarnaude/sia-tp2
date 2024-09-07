@@ -8,7 +8,8 @@ from src.select import Select
 
 class Traditional(Replace):
 
-    def replace(cls, last_gen: List[Individual],new_gen: List[Individual],method_3: Select, method_4: Select,n:int,b: float) -> List[Individual]:
+    @classmethod
+    def replace(cls, last_gen: List[Individual],new_gen: List[Individual], method_3, method_4, n:int, b: float) -> List[Individual]:
         #juntamos ambas generaciones
         population=last_gen+new_gen
 
@@ -19,9 +20,9 @@ class Traditional(Replace):
         to_return=[]
 
         #Agregamos selected_method3_size de individuos
-        to_return.append(method_3.select(population,selected_method3_size))
+        to_return.extend(method_3(population,selected_method3_size))
         #Agregamos  n-selected_method3_size de individuos, con esto seleccionamos n individuos en total
-        to_return.append(method_4.select(population,n-selected_method3_size))
+        to_return.extend(method_4(population,n-selected_method3_size))
 
         return to_return
 

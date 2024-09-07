@@ -1,8 +1,9 @@
 from src.genes.Gene import Gene
 from src.crossover.Crossover import Crossover
 from typing import Tuple
+
 import random
-import numpy as np
+import math
 
 class Annular(Crossover):
     @classmethod
@@ -15,7 +16,7 @@ class Annular(Crossover):
         start_locus = random.randint(0, num_genes - 1)
 
         # Select a random segment length (could range from 1 to the number of genes)
-        segment_length = random.randint(0,np.ceil(num_genes/2))
+        segment_length = random.randint(0,math.ceil(num_genes/2))
 
         # Create the new genes by swapping the segment around the selected locus
         child_gene_stats1 = list(gene1_stats)

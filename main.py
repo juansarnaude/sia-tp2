@@ -1,65 +1,64 @@
-import json
 import sys
+import copy
+import math
 
+from utils.Config import Config
 from src.classes.PopulationInitializer import PopulationInitializer
+    
+def check_k(population_size: int, k: int):
+    if k>population_size:
+        raise ValueError("K selection must not be higher than population size")
+
+config = Config(sys.argv[1])
+
+k = config.selection_k
+population_size = config.population_size
+
+check_k(population_size, k)
+
+generations = []
+
+current_population = PopulationInitializer(config.population_size, config.character)
+
+generations.append(copy.deepcopy(current_population))
+
+while not config.cutoff(generations, current_population, len(generations), config.cutoff_threshold):
+    selection_count1 = math.ceil(k*config.selection_a)
+    selection_count2 = k-selection_count1
+
+    current_population1 = config.selection1(current_population, selection_count1)
+    current_population2 = config.selection2(current_population, selection_count2)
+
+    current_population = current_population1 + current_population2
+
+    child_population = []
+
+    for i in range(len(current_population) - 1):
+        childs_genes = config.crossover(current_population[i].gene, current_population[i+1].gene)
+        child1_gene = childs_genes[0]
+        child2_gene = childs_genes[1]
+        child1_gene = config.mutation(child1_gene, config.mutation_probability)
+        child2_gene = config.mutation(child2_gene, config.mutation_probability)
+        child_population.append(config.character(child1_gene))
+        child_population.append(config.character(child2_gene))
+
+    current_population = config.replacement(current_population, child_population, config.selection3, config.selection4, config.population_size, config.selection_b)
+
+    generations.append(current_population)
+
+print(current_population)
+
+    
+
+    
 
 
-def get_crossover(crossover_str):
-    if crossover_str == "crossover":
-        return globals().get('Annular')
-    elif crossover_str == "one_point":
-        return globals().get('OnePoint')
-    elif crossover_str == "two_points":
-        return globals().get('TwoPoints')
-    elif crossover_str == "uniform":
-        return globals().get('Uniform')
-    else:
-        raise ValueError(f"Invalid argument: {crossover_str}")
-
-def get_mutation(mutation_str):
-    if mutation_str == "multi_gene":
-        return globals().get('MultiGeneMutation')
-    elif mutation_str == "single_gene":
-        return globals().get('GeneMutation')
-    else:
-        raise ValueError(f"Invalid argument: {mutation_str}")
-
-def get_uniform_mutation(uniform_mutation_str):
-    if uniform_mutation_str == "non_uniform_gene":
-        return globals().get('NonUniformGeneMutation')
-    elif uniform_mutation_str == "uniform_gene":
-        return globals().get('UniformGeneMutation')
-    else:
-        raise ValueError(f"Invalid argument: {uniform_mutation_str}")
-
-def get_selection(selection_str):
-    if selection_str == "elite":
-        return globals().get('Elite')
-    elif selection_str == "roulette":
-        return globals().get('Roulette')
-    elif selection_str == "select":
-        return globals().get('src/select')
-    else:
-        raise ValueError(f"Invalid argument: {selection_str}")
 
 
-with open(f"{sys.argv[1]}", "r") as config_file:
-    config = json.load(config_file)
+    
 
-    population_size = config["population_size"]
-    class_type = config["class"]
 
-    population = PopulationInitializer(population_size, class_type)
 
-    '''
-    for ind in population:
-        print(ind.gene)
-        '''
-
-    crossover = get_crossover(config["crossover"])
-    mutation = get_mutation(config["mutation"])
-    uniform_mutation = get_uniform_mutation(config["uniform_mutation"])
-    selection = get_selection(config["selection"])
 
 
 

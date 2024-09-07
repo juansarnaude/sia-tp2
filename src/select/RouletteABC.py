@@ -1,11 +1,9 @@
-from select import select
+from src.select.Select import Select
 from typing import List
 from src.classes.Individual import Individual
 
-class RouletteABC(select):
-    """
-    Select 
-    """
+class RouletteABC(Select):
+
     @classmethod
     def roulette(cls, population:List[Individual], accumulated_relative_fitness:List, rs:List) -> List:
         to_return=[]

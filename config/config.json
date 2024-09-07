@@ -1,8 +1,21 @@
 {
   "population_size": 10,
-  "class": "archer",
-  "crossover": "crossover",
+  "character": "archer",
+  "crossover": "annular",
   "mutation": "multi_gene",
   "uniform_mutation": "non_uniform_gene",
-  "selection": "elite"
+  "mutation_probability": 0.5,
+  "selection_method1": "elite",
+  "selection_method2": "deterministic_tournament",
+  "selection_a":0.5,
+  "selection_method3":"elite",
+  "selection_method4":"deterministic_tournament",
+  "replacement":"traditional",
+  "selection_b":0.5,
+  "cutoff":"max_gen",
+  "cutoff_threshold":20,
+  "selection_k":5,
+  "m_deterministic_tournament":2,
+  "tc_boltzmann":1,
+  "t0_boltzmann":1
 }

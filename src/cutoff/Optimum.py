@@ -2,7 +2,7 @@ from typing import List
 from src.classes.Individual import Individual
 from src.cutoff.Cutoff import Cutoff
 
-class Structure(Cutoff):
+class Optimum(Cutoff):
     """
     Structure cuts off if the Individual with most fitness in the new population has the required fitness.
 

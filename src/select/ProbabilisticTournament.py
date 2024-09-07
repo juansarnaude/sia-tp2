@@ -1,12 +1,12 @@
 import random
 
-from select import select
+from src.select.Select import Select
 from typing import List
 from src.classes.Individual import Individual
 
-class ProbabilisticTournament(select):
+class ProbabilisticTournament(Select):
 
-    def select(self, cls, population:List[Individual], k: int) -> List:
+    def select(cls, population:List[Individual], k: int) -> List:
         selected=[]
 
 

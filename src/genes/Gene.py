@@ -1,11 +1,11 @@
 import random
-from typing import Tuple
+from typing import List
 import numpy as np
 
 class Gene:
     static_max_points = 200
 
-    def __init__(self,stats:Tuple[float, float, float, float, float, float]=None, random_ini:bool=False):
+    def __init__(self,stats:List[float]=None, random_ini:bool=False):
         if random_ini:
             self.height = random.uniform(1.3, 2.0)
 
@@ -18,12 +18,12 @@ class Gene:
             self.normalize()
 
         if stats:
-            self.height = stats.height
-            self.strength = stats.strength
-            self.dexterity = stats.dexterity
-            self.intelligence = stats.intelligence
-            self.vigor = stats.vigor
-            self.constitution = stats.constitution
+            self.height = stats[0]
+            self.strength = stats[1]
+            self.dexterity = stats[2]
+            self.intelligence = stats[3]
+            self.vigor = stats[4]
+            self.constitution = stats[5]
 
     def __str__(self):
         return ', '.join(map(str, self.get_all_atributes()))
@@ -69,8 +69,8 @@ class Gene:
     def getAttackStat(self):
         return (self.getTotalDexterity() + self.getTotalIntelligence()) * self.getTotalStrength() * self.getATM()
 
-    def get_stat_array(self) -> Tuple[float, float, float, float, float, float]:
-        return self.height, self.strength, self.dexterity, self.intelligence, self.vigor, self.constitution
+    def get_stat_array(self) -> List[float]:
+        return [self.height, self.strength, self.dexterity, self.intelligence, self.vigor, self.constitution]
 
     def getDefenseStat(self):
         return (self.getTotalVigor() + self.getTotalIntelligence()) * self.getTotalConstitution() * self.getDEM()

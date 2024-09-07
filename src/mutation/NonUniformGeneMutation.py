@@ -5,7 +5,7 @@ import random
 class NonUniformGeneMutation(Mutation):
 
     @classmethod
-    def mutate(cls, genes:Gene, probability: float) -> Gene | None:
+    def mutate(cls, genes:Gene, probability: float) -> Gene:
         base_genes = genes.get_stat_array()
         height_index = 0
 

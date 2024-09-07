@@ -8,5 +8,5 @@ class Mutation(ABC):
     """
     @classmethod
     @abstractmethod
-    def mutate(cls, genes:Gene, probability:float) -> Gene | None:
+    def mutate(cls, genes:Gene, probability:float) -> Gene:
         pass

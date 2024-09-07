@@ -5,18 +5,11 @@ from src.classes.Warrior import Warrior
 from src.genes.Gene import Gene
 
 
-def PopulationInitializer(size, class_type):
+def PopulationInitializer(size, Class_type):
     count = 0
     initial_population = []
     while count < size:
         gene_i = Gene(random_ini=True)
-        if class_type == "archer":
-            initial_population.append(Archer(gene=gene_i))
-        if class_type == "mage":
-            initial_population.append(Mage(gene=gene_i))
-        if class_type == "warden":
-            initial_population.append(Warden(gene=gene_i))
-        if class_type == "warrior":
-            initial_population.append(Warrior(gene=gene_i))
+        initial_population.append(Class_type(gene=gene_i))
         count += 1
     return initial_population

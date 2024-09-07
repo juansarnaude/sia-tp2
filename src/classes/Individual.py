@@ -11,3 +11,18 @@ class Individual(ABC):
 
     def __eq__(self, other):
         return self.fitness == other.fitness
+    
+    def __lt__(self, other):
+        return self.fitness < other.fitness
+    
+    def __le__(self, other):
+        return self.fitness <= other.fitness
+    
+    def __gt__(self, other):
+        return self.fitness > other.fitness
+    
+    def __ge__(self, other):
+        return self.fitness >= other.fitness
+
+    def __str__(self) -> str:
+        return f'individual: {self.fitness}'

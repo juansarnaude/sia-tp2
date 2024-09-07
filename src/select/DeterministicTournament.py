@@ -3,14 +3,15 @@ import random
 from typing import List
 from select import select
 from src.classes.Individual import Individual
+from src.select.Select import Select
 
 
-class DeterministicTournament(select):
+class DeterministicTournament(Select):
 
     def __init__(self, m):
         self.m = m
 
-    def select(self, cls, population:List[Individual] , k: int) -> List:
+    def select(self, population:List[Individual], k:int) -> List:
         selected=[]
 
         for _ in range(k):

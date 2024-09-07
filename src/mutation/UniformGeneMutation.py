@@ -5,7 +5,7 @@ import random
 class UniformGeneMutation(Mutation):
 
     @classmethod
-    def mutate(cls, genes:Gene, probability: float) -> Gene | None:
+    def mutate(cls, genes:Gene, probability: float) -> Gene:
         base_genes = genes.get_stat_array()
         height_index = 0
         for i in range(len(base_genes) - 1):
