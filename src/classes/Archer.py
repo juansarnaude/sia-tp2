@@ -6,3 +6,9 @@ class Archer(Individual):
 
     def getPerformance(self):
         return 0.9 * self.gene.getAttackStat() + 0.1 * self.gene.getDefenseStat()
+
+    def __hash__(self):
+        return hash(self.gene)
+
+    def __eq__(self, other):
+        return isinstance(other, Archer) and self.gene == other.gene

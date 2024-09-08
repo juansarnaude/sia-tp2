@@ -4,7 +4,7 @@ from src.cutoff.Cutoff import Cutoff
 
 class Content(Cutoff):
     """
-    Structure cuts off if the best individual is the same in the past N generations.
+    Content cuts off if the best individual is the same in the past N generations.
 
     Args:
         old_population (List[List[Individual]]): List of past generations which are lists of Individuals.
