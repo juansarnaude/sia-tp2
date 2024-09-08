@@ -13,7 +13,7 @@
   "replacement":"traditional",
   "selection_b":0.5,
   "cutoff":"content",
-  "cutoff_threshold":300,
+  "cutoff_threshold":5,
   "selection_k":100,
   "m_deterministic_tournament":2,
   "tc_boltzmann":1,
