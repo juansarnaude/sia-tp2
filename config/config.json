@@ -1,7 +1,7 @@
 {
-  "population_size": 10,
-  "character": "warden",
-  "crossover": "annular",
+  "population_size": 1000,
+  "character": "archer",
+  "crossover": "uniform",
   "mutation": "multi_gene",
   "uniform_mutation": "non_uniform_gene",
   "mutation_probability": 0.5,
@@ -13,8 +13,8 @@
   "replacement":"traditional",
   "selection_b":0.5,
   "cutoff":"content",
-  "cutoff_threshold":50,
-  "selection_k":10,
+  "cutoff_threshold":300,
+  "selection_k":100,
   "m_deterministic_tournament":2,
   "tc_boltzmann":1,
   "t0_boltzmann":1

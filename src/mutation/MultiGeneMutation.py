@@ -6,7 +6,7 @@ import random
 class MultiGeneMutation(Mutation):
 
     @classmethod
-    def mutate(cls, genes: Gene, probability: float) -> Gene:
+    def mutate(cls, genes:Gene, probability: float) -> Gene:
         base_genes = genes.get_stat_array()
         # Simulate the probability randomness
 
