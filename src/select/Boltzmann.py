@@ -7,20 +7,20 @@ import math as m
 
 
 class Boltzmann(RouletteABC):
-    def __init__(cls, tc, t0):
-        cls.tc = tc
-        cls.t0 = t0
-        cls.t = 0
 
-    def exp_val(cls, i, T, avg):
+    def __init__(self, tc, t0):
+        self.tc = tc
+        self.t0 = t0
+        self.t = 0
+
+    def exp_val(self, i, T, avg):
         value = m.exp(i.getPerformance() / T) / avg
         return value
 
-    @classmethod
-    def select(cls, population:List[Individual], k: int) -> List:
+    def select(self, population:List[Individual], k: int) -> List:
 
         sum_exp_val = 0
-        T = cls.tc + (cls.t0 - cls.tc) * m.exp(-k * cls.t)
+        T = self.tc + (self.t0 - self.tc) * m.exp(-k * self.t)
 
         for individual in population:
             sum_exp_val += m.exp(individual.getPerformance() / T)
@@ -32,12 +32,12 @@ class Boltzmann(RouletteABC):
         sum_exp_val=0
 
         for individual in population:
-            exp_val=cls.exp_val(individual, T, avg_exp_val)
+            exp_val=self.exp_val(individual, T, avg_exp_val)
             exp_values.append(exp_val)
             sum_exp_val+=exp_val
 
         #TODO no estoy muy seguro si el t chico se maneja asi
-        cls.t+=1
+        self.t+=1
 
         # We calculate the relative fitness of every element in the array
         relative_f = [fitness / sum_exp_val for fitness in exp_values]
@@ -52,6 +52,6 @@ class Boltzmann(RouletteABC):
 
         rs = []
         for i in range(k):
-            rs.append(random)
+            rs.append(random.uniform(0,1))
 
-        return cls.roulette(population, accumulated_relative_f, rs)
+        return type(self).roulette(population, accumulated_relative_f, rs)

@@ -6,6 +6,8 @@ from src.select.Select import Select
 from typing import List
 
 class Roulette(RouletteABC):
+
+    @classmethod
     def select(cls, population:List[Individual], k:int) -> List:
 
         accumulated_relative_fitness=cls.get_accumulated_relative_fitness(population, k)
