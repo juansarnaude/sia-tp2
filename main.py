@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     with open('output/output.csv', mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(['Generation N°','Fitness','Height','Strength','Dexterity','Intelligence', 'Vigor','Constitution'])
+        writer.writerow(['Generation','Fitness','Height','Strength','Dexterity','Intelligence', 'Vigor','Constitution'])
 
         while not config.cutoff(generations, current_population, len(generations), config.cutoff_threshold):
             num = num +1
