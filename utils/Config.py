@@ -46,6 +46,7 @@ class Config:
             self.selection_b = config["selection_b"]
             self.tc_boltzmann = config["tc_boltzmann"]
             self.t0_boltzmann = config["t0_boltzmann"]
+            self.max_points = config["max_points"]
 
             character_str = config["character"]
             if character_str == "archer":

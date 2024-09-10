@@ -3,19 +3,18 @@ from typing import List
 import numpy as np
 
 class Gene:
-    static_max_points = 200
 
-    def __init__(self,stats:List[float]=None, random_ini:bool=False):
+    def __init__(self,stats:List[float]=None, random_ini:bool=False, static_max_points: int = 200):
         if random_ini:
             self.height = random.uniform(1.3, 2.0)
 
-            self.strength = random.randint(0,200)
-            self.dexterity = random.randint(0,200)
-            self.intelligence = random.randint(0,200)
-            self.vigor = random.randint(0,200)
-            self.constitution = random.randint(0,200)
+            self.strength = random.randint(0,static_max_points)
+            self.dexterity = random.randint(0,static_max_points)
+            self.intelligence = random.randint(0,static_max_points)
+            self.vigor = random.randint(0,static_max_points)
+            self.constitution = random.randint(0,static_max_points)
 
-            self.normalize()
+            self.normalize(static_max_points)
 
         if stats:
             self.height = stats[0]
@@ -76,11 +75,11 @@ class Gene:
     def getDefenseStat(self):
         return (self.getTotalVigor() + self.getTotalIntelligence()) * self.getTotalConstitution() * self.getDEM()
 
-    def normalize(self):
+    def normalize(self, static_max_points: int = 200):
         total_stats= self.getTotalPoints()
 
-        if self.static_max_points < total_stats:
-            normalize_value = self.static_max_points / total_stats
+        if static_max_points < total_stats:
+            normalize_value = static_max_points / total_stats
             self.strength = self.strength * normalize_value
             self.dexterity = self.dexterity * normalize_value
             self.intelligence = self.intelligence * normalize_value
