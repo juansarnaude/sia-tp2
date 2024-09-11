@@ -1,18 +1,19 @@
 from src.mutation.Mutation import Mutation
 from src.genes.Gene import Gene
+from typing import List
 import random
 
 
 class MultiGeneMutation(Mutation):
 
     @classmethod
-    def mutate(cls, genes:Gene, probability: float) -> Gene:
-        base_genes = genes.get_stat_array()
+    def mutate(cls, gene:Gene, probability: float) -> Gene:
+        base_genes = gene.get_stat_array()
         # Simulate the probability randomness
 
         already_mutated_genes=[]
 
-        m= random.randint(1,len(base_genes)-1)
+        m = random.randint(1,len(base_genes)-1)
         for i in range(m):
             if random.uniform(0, 1) <= probability:
                 # Select the atribute(Gene) to change
