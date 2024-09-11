@@ -10,7 +10,7 @@ class Individual(ABC):
         self.fitness = self.getPerformance()
 
     def __eq__(self, other):
-        return self.fitness == other.fitness
+        return self.fitness == other.fitness and self.gene == other.gene
     
     def __lt__(self, other):
         return self.fitness < other.fitness

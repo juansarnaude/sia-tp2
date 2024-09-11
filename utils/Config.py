@@ -47,6 +47,7 @@ class Config:
             self.tc_boltzmann = config["tc_boltzmann"]
             self.t0_boltzmann = config["t0_boltzmann"]
             self.max_points = config["max_points"]
+            self.repeated_generations = config["repeated_generations"]
 
             character_str = config["character"]
             if character_str == "archer":

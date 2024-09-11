@@ -15,8 +15,11 @@ class Gene:
             self.constitution = random.randint(0,static_max_points)
 
             self.normalize(static_max_points)
-
+            
         if stats:
+            for i in range(6):
+                if(stats[i] > static_max_points):
+                    raise ValueError("stat i is greater than the maximum points")
             self.height = stats[0]
             self.strength = stats[1]
             self.dexterity = stats[2]
@@ -24,9 +27,24 @@ class Gene:
             self.vigor = stats[4]
             self.constitution = stats[5]
 
+
     def __str__(self):
         attributes = self.get_all_atributes()
         return ', '.join([f"{name}={value}" for name, value in attributes])
+    
+    def __eq__(self, other):
+        if not isinstance(other, Gene):
+            return False
+        return (self.height == other.height and
+                self.strength == other.strength and
+                self.dexterity == other.dexterity and
+                self.intelligence == other.intelligence and
+                self.vigor == other.vigor and
+                self.constitution == other.constitution)
+
+    def __hash__(self):
+        return hash((self.height, self.strength, self.dexterity, 
+                     self.intelligence, self.vigor, self.constitution))
 
     def get_all_atributes(self):
         attributes = [

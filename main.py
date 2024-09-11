@@ -53,7 +53,7 @@ if __name__ == "__main__":
             writer = csv.writer(file)
             writer.writerow(['Generation','Fitness','Height','Strength','Dexterity','Intelligence', 'Vigor','Constitution'])
 
-            while not config.cutoff(generations, current_population, len(generations), config.cutoff_threshold):
+            while not config.cutoff(generations, current_population, config.repeated_generations, config.cutoff_threshold):
                 num = num +1
                 selection_count1 = math.ceil(k*config.selection_a)
                 selection_count2 = k-selection_count1
