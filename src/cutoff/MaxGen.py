@@ -17,6 +17,6 @@ class MaxGen(Cutoff):
     """
 
     @classmethod
-    def cutoff(cls, old_population:List[List[Individual]], new_population:List[Individual], generations: int, threshold: int) -> bool:
+    def cutoff(cls, old_populations:List[List[Individual]], new_population:List[Individual], generations: int, threshold: int) -> bool:
         cls.validate_params(generations, threshold)
-        return generations >= threshold
+        return len(old_populations) >= threshold

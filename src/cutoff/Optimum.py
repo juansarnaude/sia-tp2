@@ -28,4 +28,4 @@ class Optimum(Cutoff):
         # Get the Individual with the best fitness from the new generation
         best_individual_fitness = max(new_population, key=lambda individual: individual.fitness)
 
-        return best_individual_fitness >= threshold
+        return best_individual_fitness.getPerformance() >= threshold
