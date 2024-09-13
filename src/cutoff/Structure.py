@@ -17,19 +17,37 @@ class Structure(Cutoff):
     """
 
     @classmethod
-    def cutoff(cls, old_population:List[List[Individual]], new_population:List[Individual], generations: int, threshold: float) -> bool:
+    def cutoff(cls, old_populations:List[List[Individual]], new_population:List[Individual], generations: int, threshold: float) -> bool:
 
         cls.validate_params(generations, threshold)
         
         # If we don't have enough past generations to compare, keep going
-        if len(old_population) < generations:
-            return False
+        # if len(old_population) < generations:
+        #     return False
 
         # Flatten the old populations from the last 'generation' into a single set of individuals
-        previous_individuals = set(individual for gen in old_population[-generations:] for individual in gen)
+        previous_individuals = set(individual for gen in old_populations[-generations:] for individual in gen)
 
+        # print(f"repeated individuals from previus generations: {len(previous_individuals)}")
+        # print("previous individuals")
+        # for individual in previous_individuals:
+        #     print(individual.id)
+
+        # print("current individuals")
+        # for individual in new_population:
+        #     print(individual.id)
+
+        # total = 0
+        # for population in old_populations:
+        #     total = total + len(population)
+        # print(f"total individuals in all generations: {total}")
+        # print()
+        
         # Count how many individuals from the new population exist in the previous generations
         common_individuals = sum(1 for individual in new_population if individual in previous_individuals)
+
+        if len(old_populations) < generations:
+            return False
 
         # Check if the portion of unchanged individuals is greater than or equal to the threshold
         unchanged_portion = common_individuals / len(new_population)
