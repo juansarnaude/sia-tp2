@@ -27,6 +27,7 @@ class Gene:
             self.vigor = stats[4]
             self.constitution = stats[5]
 
+            #TODO: check that no more than max_points are assinged
 
     def __str__(self):
         attributes = self.get_all_atributes()
