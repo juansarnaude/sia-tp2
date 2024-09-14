@@ -6,7 +6,7 @@ class Cutoff(ABC):
 
     @classmethod
     @abstractmethod
-    def cutoff(cls, old_population:List[List[Individual]], new_population:List[Individual], generations: int, threshold: any) -> bool:
+    def cutoff(cls, old_populations:List[List[Individual]], new_population:List[Individual], generations: int, threshold: any) -> bool:
         pass
 
     @classmethod

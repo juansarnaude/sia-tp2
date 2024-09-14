@@ -22,8 +22,8 @@ class Structure(Cutoff):
         cls.validate_params(generations, threshold)
         
         # If we don't have enough past generations to compare, keep going
-        # if len(old_population) < generations:
-        #     return False
+        if len(old_populations) < generations:
+            return False
 
         # Flatten the old populations from the last 'generation' into a single set of individuals
         previous_individuals = set(individual for gen in old_populations[-generations:] for individual in gen)

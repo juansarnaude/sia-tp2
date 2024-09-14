@@ -17,12 +17,12 @@ class Optimum(Cutoff):
     """
 
     @classmethod
-    def cutoff(cls, old_population:List[List[Individual]], new_population:List[Individual], generations: int, threshold: float) -> bool:
+    def cutoff(cls, old_populations:List[List[Individual]], new_population:List[Individual], generations: int, threshold: float) -> bool:
 
         cls.validate_params(generations, threshold)
         
         # If we don't have enough past generations to compare, keep going
-        if len(old_population) < generations:
+        if len(old_populations) < generations:
             return False
 
         # Get the Individual with the best fitness from the new generation

@@ -17,17 +17,17 @@ class Content(Cutoff):
     """
 
     @classmethod
-    def cutoff(cls, old_population: List[List[Individual]], new_population: List[Individual], generations: int, threshold: int) -> bool:
+    def cutoff(cls, old_populations: List[List[Individual]], new_population: List[Individual], generations: int, threshold: int) -> bool:
         cls.validate_params(generations, threshold)
         
-        if len(old_population) < threshold:
+        if len(old_populations) < threshold:
             return False  # Not enough data to compare yet
         
         # Get the best individual from the new population
         best_new_individual = max(new_population, key=lambda ind: ind.fitness)
         
         # Check the best individual in the past N generations
-        for gen in old_population[-threshold:]:
+        for gen in old_populations[-threshold:]:
             best_past_individual = max(gen, key=lambda ind: ind.fitness)
             if best_new_individual != best_past_individual:
                 return False
