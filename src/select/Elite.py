@@ -6,7 +6,17 @@ from src.classes.Individual import Individual
 
 
 class Elite(Select):
+    """
+    Selects K Individuals from a set of N, the set if first ordered by
+    fitness and each Individual is selected n(i) = ceil((K-i)/N) times.
 
+    Args:
+        population (List[Individual]): List of Individual.
+        K (int): Number of Individuals to be selected.
+
+    Return:
+        List[Individual]: selected population
+    """
     @classmethod
     def select(cls, population:List[Individual], k: int) -> List:
         sorted_population = sorted(population,reverse=True)
@@ -14,7 +24,7 @@ class Elite(Select):
         to_return=[]
 
         for i, individual in enumerate(sorted_population):
-            times=math.ceil((k-i+1)/n)
+            times=math.ceil((k-i)/n)
             for _ in range(times):
                 to_return.append(individual)
 

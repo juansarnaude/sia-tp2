@@ -39,7 +39,7 @@ def test_content_true_at_5th():
     cutoff = Content()
     for i in range(5):
         population.append(archers[i])
-        assert cutoff.cutoff(old_population=generations, new_population=population, generations=len(generations), threshold=4) == bools[i]
+        assert cutoff.cutoff(old_populations=generations, new_population=population, generations=len(generations), threshold=4) == bools[i]
         generations.append(copy.deepcopy(population))
 
 def test_content_false():
@@ -51,7 +51,7 @@ def test_content_false():
     cutoff = Content()
     for i in range(5):
         population.append(archers[i])
-        assert cutoff.cutoff(old_population=generations, new_population=population, generations=len(generations), threshold=1) == bools[i]
+        assert cutoff.cutoff(old_populations=generations, new_population=population, generations=len(generations), threshold=1) == bools[i]
         generations.append(copy.deepcopy(population))
 
 def test_max_gen_true():
@@ -117,7 +117,7 @@ def test_optimum_true():
     cutoff = Optimum()
     for i in range(5):
         population.append(archers[i])
-        assert cutoff.cutoff(old_population=generations, new_population=population, generations=1, threshold=optimum_fitness) == bools[i]
+        assert cutoff.cutoff(old_populations=generations, new_population=population, generations=1, threshold=optimum_fitness) == bools[i]
 
 def test_optimum_false():
     optimum_fitness = 17.0
@@ -131,4 +131,4 @@ def test_optimum_false():
     cutoff = Optimum()
     for i in range(5):
         population.append(archers[i])
-        assert cutoff.cutoff(old_population=generations, new_population=population, generations=1, threshold=optimum_fitness) == bools[i]
+        assert cutoff.cutoff(old_populations=generations, new_population=population, generations=1, threshold=optimum_fitness) == bools[i]

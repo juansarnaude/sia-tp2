@@ -9,6 +9,8 @@ import math as m
 class Boltzmann(RouletteABC):
 
     def __init__(self, tc, t0):
+        if not tc <= t0:
+            raise ValueError("tc should be smaller or equal than t0")
         self.tc = tc
         self.t0 = t0
         self.t = 0
