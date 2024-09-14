@@ -13,7 +13,6 @@ from src.crossover.Uniform import Uniform
 from src.mutation.GeneMutation import GeneMutation
 from src.mutation.MultiGeneMutation import MultiGeneMutation
 from src.mutation.NonUniformGeneMutation import NonUniformGeneMutation
-from src.mutation.UniformGeneMutation import UniformGeneMutation
 
 from src.select.Boltzmann import Boltzmann
 from src.select.DeterministicTournament import DeterministicTournament
@@ -36,18 +35,13 @@ class Config:
     def __init__(self, config_path):
         with open(config_path, "r") as file:
             config = json.load(file)
+            
+            # General configurations
             self.population_size = config["population_size"]
-            self.cutoff_threshold = config["cutoff_threshold"]
-            self.selection_k = config["selection_k"]
-            self.m_deterministic_tournament = config["m_deterministic_tournament"]
-            self.character = config["character"]
-            self.mutation_probability = config["mutation_probability"]
-            self.selection_a = config["selection_a"]
-            self.selection_b = config["selection_b"]
-            self.tc_boltzmann = config["tc_boltzmann"]
-            self.t0_boltzmann = config["t0_boltzmann"]
             self.max_points = config["max_points"]
-            self.repeated_generations = config["repeated_generations"]
+
+            # Character configurations
+            self.character = config["character"]
 
             character_str = config["character"]
             if character_str == "archer":
@@ -59,6 +53,7 @@ class Config:
             elif character_str == "warden":
                 self.character = Warden
 
+            # Crossover method configuration
             crossover_str = config["crossover"]
             if crossover_str == "annular":
                 self.crossover = Annular.cross
@@ -69,89 +64,125 @@ class Config:
             elif crossover_str == "uniform":
                 self.crossover = Uniform.cross
 
-            mutation_str = config["mutation"]
-            if mutation_str == "single_gene":
+            # Mutation configurations
+            mutation = config["mutation"]
+            mutation_type = mutation["type"]
+            if mutation_type == "single_gene":
                 self.mutation = GeneMutation.mutate
-            elif mutation_str == "multi_gene":
+            elif mutation_type == "multi_gene":
                 self.mutation = MultiGeneMutation.mutate
 
-            uniform_mutation_str = config["uniform_mutation"]
-            if uniform_mutation_str == "non_uniform_gene":
-                self.uniform_mutation = NonUniformGeneMutation.mutate
-            elif uniform_mutation_str == "uniform_gene":
-                self.uniform_mutation = UniformGeneMutation.mutate
+            probability_variation_str = mutation["probability_variation"]
+            if probability_variation_str == "non_uniform":
+                self.mutation_variation = NonUniformGeneMutation.mutate
+            else:
+                self.mutation_variation = None
+            
+            self.mutation_probability = mutation["probability"]
 
-            selection_method1_str = config["selection_method1"]
+            non_uniform_bound = mutation["non_uniform_mutation"]
+            self.non_uniform_lower_bound = non_uniform_bound["lower_bound"]
+            self.non_uniform_upper_bound = non_uniform_bound["upper_bound"]
+
+            # Selection configurations
+            selection = config["selection"]
+
+            methods_configuration_selection = selection["methods_configuration"]
+            m_deterministic_tournament_selection = methods_configuration_selection["deterministic_tournament"]["m"]
+
+            tc_selection = methods_configuration_selection["boltzmann"]["tc"]
+            t0_selection = methods_configuration_selection["boltzmann"]["t0"]
+
+            selection_method1_str = selection["method1"]
             if selection_method1_str == "elite":
                 self.selection1 = Elite.select
             elif selection_method1_str == "ranking":
                 self.selection1 = Ranking.select
             elif selection_method1_str == "deterministic_tournament":
-                self.selection1 = DeterministicTournament(self.m_deterministic_tournament).select
+                self.selection1 = DeterministicTournament(m_deterministic_tournament_selection).select
             elif selection_method1_str == "probabilistic_tournament":
                 self.selection1 = ProbabilisticTournament.select
             elif selection_method1_str == "boltzmann":
-                self.selection1 = Boltzmann(self.tc_boltzmann, self.t0_boltzmann).select
+                self.selection1 = Boltzmann(tc_selection, t0_selection).select
             elif selection_method1_str == "roulette":
                 self.selection1 = Roulette.select
             elif selection_method1_str == "universal":
                 self.selection1 = Universal.select
 
-            selection_method2_str = config["selection_method2"]
+            selection_method2_str = selection["method2"]
             if selection_method2_str == "elite":
                 self.selection2 = Elite.select
             elif selection_method2_str == "ranking":
                 self.selection2 = Ranking.select
             elif selection_method2_str == "deterministic_tournament":
-                self.selection2 = DeterministicTournament(self.m_deterministic_tournament).select
+                self.selection2 = DeterministicTournament(m_deterministic_tournament_selection).select
             elif selection_method2_str == "probabilistic_tournament":
                 self.selection2 = ProbabilisticTournament.select
             elif selection_method2_str == "boltzmann":
-                self.selection2 = Boltzmann(self.tc_boltzmann, self.t0_boltzmann).select
+                self.selection2 = Boltzmann(tc_selection, t0_selection).select
             elif selection_method2_str == "roulette":
                 self.selection2 = Roulette.select
             elif selection_method2_str == "universal":
                 self.selection2 = Universal.select
 
-            selection_method3_str = config["selection_method3"]
-            if selection_method3_str == "elite":
-                self.selection3 = Elite.select
-            elif selection_method3_str == "ranking":
-                self.selection3 = Ranking.select
-            elif selection_method3_str == "deterministic_tournament":
-                self.selection3 = DeterministicTournament(self.m_deterministic_tournament).select
-            elif selection_method3_str == "probabilistic_tournament":
-                self.selection3 = ProbabilisticTournament.select
-            elif selection_method3_str == "boltzmann":
-                self.selection3 = Boltzmann(self.tc_boltzmann, self.t0_boltzmann).select
-            elif selection_method3_str == "roulette":
-                self.selection3 = Roulette.select
-            elif selection_method3_str == "universal":
-                self.selection3 = Universal.select
+            self.selection_a = selection["a"]
 
-            selection_method4_str = config["selection_method4"]
-            if selection_method4_str == "elite":
-                self.selection4 = Elite.select
-            elif selection_method4_str == "ranking":
-                self.selection4 = Ranking.select
-            elif selection_method4_str == "deterministic_tournament":
-                self.selection4 = DeterministicTournament(self.m_deterministic_tournament).select
-            elif selection_method4_str == "probabilistic_tournament":
-                self.selection4 = ProbabilisticTournament.select
-            elif selection_method4_str == "boltzmann":
-                self.selection4 = Boltzmann(self.tc_boltzmann, self.t0_boltzmann).select
-            elif selection_method4_str == "roulette":
-                self.selection4 = Roulette.select
-            elif selection_method4_str == "universal":
-                self.selection4 = Universal.select
+            # Replacement configurations
 
-            replacement_str = config["replacement"]
+            replacement = config["replacement"]
+
+            replacement_str = replacement["type"]
             if replacement_str == "traditional":
                 self.replacement = Traditional.replace
             elif replacement_str == "bias":
                 self.replacement = Bias.replace
 
-            cutoff_str = config["cutoff"]
+            methods_configuration_replacement = replacement["methods_configuration"]
+            m_deterministic_tournament_replacement = methods_configuration_replacement["deterministic_tournament"]["m"]
+
+            tc_replacement = methods_configuration_replacement["boltzmann"]["tc"]
+            t0_replacement = methods_configuration_replacement["boltzmann"]["t0"]
+
+            selection_method3_str = replacement["method3"]
+            if selection_method3_str == "elite":
+                self.selection3 = Elite.select
+            elif selection_method3_str == "ranking":
+                self.selection3 = Ranking.select
+            elif selection_method3_str == "deterministic_tournament":
+                self.selection3 = DeterministicTournament(m_deterministic_tournament_replacement).select
+            elif selection_method3_str == "probabilistic_tournament":
+                self.selection3 = ProbabilisticTournament.select
+            elif selection_method3_str == "boltzmann":
+                self.selection3 = Boltzmann(tc_replacement, t0_replacement).select
+            elif selection_method3_str == "roulette":
+                self.selection3 = Roulette.select
+            elif selection_method3_str == "universal":
+                self.selection3 = Universal.select
+
+            selection_method4_str = replacement["method4"]
+            if selection_method4_str == "elite":
+                self.selection4 = Elite.select
+            elif selection_method4_str == "ranking":
+                self.selection4 = Ranking.select
+            elif selection_method4_str == "deterministic_tournament":
+                self.selection4 = DeterministicTournament(m_deterministic_tournament_replacement).select
+            elif selection_method4_str == "probabilistic_tournament":
+                self.selection4 = ProbabilisticTournament.select
+            elif selection_method4_str == "boltzmann":
+                self.selection4 = Boltzmann(tc_replacement, t0_replacement).select
+            elif selection_method4_str == "roulette":
+                self.selection4 = Roulette.select
+            elif selection_method4_str == "universal":
+                self.selection4 = Universal.select
+
+            self.selection_b = replacement["b"]
+            self.selection_k = replacement["k"]
+
+            # Cutoff configurations
+
+            cutoff = config["cutoff"]
+
+            cutoff_str = cutoff["method"]
             if cutoff_str == "max_gen":
                 self.cutoff = MaxGen.cutoff
             elif cutoff_str == "optimum":
@@ -160,3 +191,6 @@ class Config:
                 self.cutoff = Content.cutoff
             elif cutoff_str == "structure":
                 self.cutoff = Structure.cutoff
+
+            self.cutoff_threshold = cutoff["threshold"]
+            self.repeated_generations = cutoff["repeated_generations"]

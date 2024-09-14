@@ -1,23 +1,50 @@
 {
-  "population_size": 100,
-  "max_points":150,
-  "character": "archer",
-  "crossover": "uniform",
-  "mutation": "single_gene",
-  "uniform_mutation": "uniform_gene",
-  "mutation_probability": 1,
-  "selection_method1": "elite",
-  "selection_method2": "deterministic_tournament",
-  "selection_a":1,
-  "selection_method3":"elite",
-  "selection_method4":"deterministic_tournament",
-  "replacement":"traditional",
-  "selection_b":1,
-  "cutoff":"structure",
-  "cutoff_threshold":1,
-  "repeated_generations": 1,
-  "selection_k":100,
-  "m_deterministic_tournament":2,
-  "tc_boltzmann":1,
-  "t0_boltzmann":1
+    "population_size": 1000,
+    "max_points":150,
+    "character": "archer",
+    "crossover": "uniform",
+    "mutation":{
+        "probability":0.7,
+        "type":"single_gene",
+        "probability_variation":"non_uniform",
+        "non_uniform_mutation":{
+            "lower_bound":0.3,
+            "upper_bound":0.7
+        }
+    },
+    "selection":{
+        "methods_configuration":{
+            "deterministic_tournament":{
+                "m":2
+            },
+            "boltzmann":{
+                "tc":2.8,
+                "t0":7.6
+            }
+        },
+        "method1":"elite",
+        "method2":"deterministic_tournament",
+        "a":0.5
+    },
+    "replacement":{
+        "type":"traditional",
+        "methods_configuration":{
+            "deterministic_tournament":{
+                "m":2
+            },
+            "boltzmann":{
+                "tc":2.8,
+                "t0":7.6
+            }
+        },
+        "method3":"elite",
+        "method4":"deterministic_tournament",
+        "b":0.5,
+        "k":150
+    },
+    "cutoff":{
+        "method":"content",
+        "threshold":5,
+        "repeated_generations":5
+    }
 }
