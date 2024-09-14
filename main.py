@@ -64,12 +64,18 @@ if __name__ == "__main__":
 
                 child_population = []
 
+                mutation_probability = 0
+                if config.mutation_variation == None: # None means uniform
+                    mutation_probability = config.mutation_probability
+                else:
+                    mutation_probability = config.mutation_variation(config.non_uniform_lower_bound, config.non_uniform_upper_bound) 
+
                 for i in range(len(current_population) - 1):
                     childs_genes = config.crossover(current_population[i].gene, current_population[i+1].gene)
                     child1_gene = childs_genes[0]
                     child2_gene = childs_genes[1]
-                    child1_gene = config.mutation(child1_gene, config.mutation_probability)
-                    child2_gene = config.mutation(child2_gene, config.mutation_probability)
+                    child1_gene = config.mutation(child1_gene, mutation_probability)
+                    child2_gene = config.mutation(child2_gene, mutation_probability)
                     new_individual1=config.character(child1_gene)
                     new_individual2=config.character(child2_gene)
                     child_population.append(new_individual1)

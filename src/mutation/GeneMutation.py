@@ -4,6 +4,9 @@ import random
 
 
 class GeneMutation(Mutation):
+    """
+    If an Individual randomly mutates, a locus gets selected to mutate
+    """
 
     @classmethod
     def mutate(cls, genes:Gene, probability: float) -> Gene:

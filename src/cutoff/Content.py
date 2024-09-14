@@ -9,7 +9,7 @@ class Content(Cutoff):
     Args:
         old_population (List[List[Individual]]): List of past generations which are lists of Individuals.
         new_population (List[Individual]): List of Individuals in the new generation.
-        generations (int): The number of the actual generation.
+        generations (int): Not needed.
         threshold (int): Number of generations to check for stagnation.
 
     Return:

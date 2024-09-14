@@ -5,6 +5,9 @@ import random
 
 
 class MultiGeneMutation(Mutation):
+    """
+    Each Individual's Gene (Locus) randomly mutates, independently from the rest
+    """
 
     @classmethod
     def mutate(cls, gene:Gene, probability: float) -> Gene:
