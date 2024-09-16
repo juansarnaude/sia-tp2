@@ -48,7 +48,7 @@ if __name__ == "__main__":
         if not os.path.exists('output'):
             os.makedirs('output')
 
-        with open('output/output.csv', mode='w', newline='') as file:
+        with open('output/' + sys.argv[2] + '.csv', mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['Generation','Fitness','Height','Strength','Dexterity','Intelligence', 'Vigor','Constitution'])
 
@@ -106,6 +106,7 @@ if __name__ == "__main__":
     finally:
         # Disable the alarm after execution is finished
         signal.alarm(0)
+        print()
     
 
     
