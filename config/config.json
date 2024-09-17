@@ -1,7 +1,8 @@
 {
-    "population_size": 1000,
     "max_points":150,
     "character": "archer",
+    "max_time":10,
+    "population_size": 1000,
     "crossover": "uniform",
     "mutation":{
         "probability":0.7,

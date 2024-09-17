@@ -53,6 +53,9 @@ class Config:
             elif character_str == "warden":
                 self.character = Warden
 
+            # Set maximum time
+            self.max_time = config["max_time"]
+
             # Crossover method configuration
             crossover_str = config["crossover"]
             if crossover_str == "annular":
