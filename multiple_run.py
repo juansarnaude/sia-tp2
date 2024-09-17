@@ -5,8 +5,6 @@ import time
 
 def run_command(times):
 
-
-
     for i in range(times):
         print(f"Running command iteration {i + 1}")
         command = ['python', 'main.py', 'config/config.json', sys.argv[1] + str(i)]

@@ -41,7 +41,7 @@
         "method3":"elite",
         "method4":"deterministic_tournament",
         "b":0.5,
-        "k":150
+        "k":10
     },
     "cutoff":{
         "method":"content",

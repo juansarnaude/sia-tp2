@@ -6,6 +6,7 @@ import random
 import os
 import time
 
+
 from utils.Config import Config
 from src.classes.PopulationInitializer import PopulationInitializer
     
@@ -50,7 +51,7 @@ if __name__ == "__main__":
         writer.writerow(['Generation','Fitness','Height','Strength','Dexterity','Intelligence', 'Vigor','Constitution'])
 
         while not time.time() - start > config.max_time and not config.cutoff(generations, current_population, config.repeated_generations, config.cutoff_threshold):
-            
+
             num = num +1
             selection_count1 = math.ceil(k*config.selection_a)
             selection_count2 = k-selection_count1
