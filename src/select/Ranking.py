@@ -8,7 +8,7 @@ class Ranking(RouletteABC):
 
     @classmethod
     def select(cls, population:List[Individual], k: int) -> List:
-        ranking = sorted(population, reverse=False)
+        ranking = sorted(population, reverse=True)
         n=len(population)
 
         fs=[]

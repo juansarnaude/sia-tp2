@@ -87,8 +87,7 @@ def genetic_algorithm(config: Config):
     #                         individual.gene.intelligence,individual.gene.vigor,individual.gene.constitution])
 
     #print(f'Generation n°: {num}, best_fitness: {best_individual}')
-    best_individual = max(current_population, key=lambda ind: ind.getPerformance())
-    return best_individual.fitness
+    return generations
 
 
     
