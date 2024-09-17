@@ -72,6 +72,42 @@ if __name__ == "__main__":
                                        Boltzmann(config.tc_selection,config.t0_selection),Traditional.replace,Ranking.select,Elite.select,Content.cutoff]
     best_hyperparameters_for_warrior = [TwoPoints.cross,MultiGeneMutation.mutate,NonUniformGeneMutation.mutate,Boltzmann(config.tc_selection,config.t0_selection),
                                         Ranking.select,Traditional.replace,Ranking.select,Ranking.select,Optimum.cutoff]
+    
+    best_hyperparameters_for_archer_unlimited_time=[TwoPoints.cross,
+                                       GeneMutation.mutate,
+                                       None,
+                                       Elite.select,
+                                       Elite.select,
+                                       Traditional.replace,
+                                       Elite.select,Elite.select,
+                                       [Structure.cutoff, Optimum.cutoff]]
+
+    best_hyperparameters_for_mage_unlimited_time=[Uniform.cross,
+                                                 GeneMutation.mutate,
+                                                 None,
+                                                 Elite.select,
+                                                 Boltzmann(config.tc_selection,config.t0_selection),
+                                                 Bias.replace,
+                                                 Universal.select, Elite.select,
+                                                 Optimum.cutoff]
+
+    best_hyperparameters_for_warden_unlimited_time=[Uniform.cross,
+                                                   MultiGeneMutation.mutate,
+                                                   NonUniformGeneMutation.mutate,
+                                                   Elite.select,
+                                                   Elite.select,
+                                                   Traditional.replace,
+                                                   Elite.select, Elite.select,
+                                                   Content.cutoff]
+    
+    best_hyperparameters_for_warrior_unlimited_time=[Uniform.cross,
+                                                     GeneMutation.mutate,
+                                                     None,
+                                                     Elite.select,
+                                                     Elite.select,
+                                                     Traditional.replace,
+                                                     Elite.select, Elite.select,
+                                                     Optimum.cutoff]
 
     for k,character in enumerate(characters):
         config.character = character
