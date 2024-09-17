@@ -9,7 +9,7 @@ class Optimum(Cutoff):
     Args:
         old_population (List[List[Individual]]): Not Required.
         new_population (List[Individual]): List of Individual.
-        generations (int): N past generations to look out for repeated individuals in the new generation.
+        generations (int):Not required.
         threshold (float): Minimum fitness required from the best Individual in the new population.
 
     Return:

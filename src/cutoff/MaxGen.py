@@ -9,7 +9,7 @@ class MaxGen(Cutoff):
     Args:
         old_population (List[List[Individual]]): Not needed.
         new_population (List[Individual]): Not needed either.
-        generations (int): The number of the actual generation.
+        generations (int): Not needed.
         threshold (int): The number of maximum amount of generations at which the genetic algorithm should cut off.
 
     Return:
