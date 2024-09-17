@@ -4,11 +4,11 @@
     "max_time":10,
     "population_seed":91218,
     "population_size": 1000,
-    "crossover": "uniform",
+    "crossover": "two_points",
     "mutation":{
         "probability":0.5,
         "type":"multi_gene",
-        "probability_variation":"uniform",
+        "probability_variation":"non_uniform",
         "non_uniform_mutation":{
             "lower_bound":0.3,
             "upper_bound":0.7
@@ -24,8 +24,8 @@
                 "t0":8
             }
         },
-        "method1":"elite",
-        "method2":"roulette",
+        "method1":"boltzmann",
+        "method2":"boltzmann",
         "a":0.5
     },
     "replacement":{
@@ -39,13 +39,13 @@
                 "t0":8
             }
         },
-        "method3":"deterministic_tournament",
+        "method3":"ranking",
         "method4":"elite",
-        "b":0.8,
+        "b":0.5,
         "k":150
     },
     "cutoff":{
-        "method":"content",
+        "method":"optimum",
         "threshold":50,
         "repeated_generations":5
     }
