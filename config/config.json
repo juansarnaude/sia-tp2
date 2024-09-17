@@ -2,6 +2,7 @@
     "max_points":150,
     "character": "archer",
     "max_time":10,
+    "population_seed":91218,
     "population_size": 1000,
     "crossover": "uniform",
     "mutation":{

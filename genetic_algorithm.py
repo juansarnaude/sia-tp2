@@ -26,8 +26,8 @@ def genetic_algorithm(config: Config):
 
     start = time.time()
 
-    # Plant the seed 
-    random.seed('Que asco me da boca')
+    # Plant the seed for creating the same population
+    random.seed(config.population_seed)
 
     k = config.selection_k
     population_size = config.population_size

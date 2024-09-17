@@ -40,6 +40,9 @@ class Config:
             self.population_size = config["population_size"]
             self.max_points = config["max_points"]
 
+            # set the seed
+            self.population_seed = config["population_seed"]
+
             # Character configurations
             self.character = config["character"]
 
