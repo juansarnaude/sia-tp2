@@ -6,9 +6,9 @@
     "population_size": 1000,
     "crossover": "uniform",
     "mutation":{
-        "probability":0.7,
+        "probability":0.5,
         "type":"single_gene",
-        "probability_variation":"non_uniform",
+        "probability_variation":"uniform",
         "non_uniform_mutation":{
             "lower_bound":0.3,
             "upper_bound":0.7
@@ -20,13 +20,13 @@
                 "m":2
             },
             "boltzmann":{
-                "tc":2.8,
-                "t0":7.6
+                "tc":4,
+                "t0":8
             }
         },
         "method1":"elite",
         "method2":"deterministic_tournament",
-        "a":0.5
+        "a":1
     },
     "replacement":{
         "type":"traditional",
@@ -35,18 +35,18 @@
                 "m":2
             },
             "boltzmann":{
-                "tc":2.8,
-                "t0":7.6
+                "tc":4,
+                "t0":8
             }
         },
         "method3":"elite",
         "method4":"deterministic_tournament",
-        "b":0.5,
-        "k":10
+        "b":1,
+        "k":150
     },
     "cutoff":{
         "method":"content",
-        "threshold":5,
+        "threshold":50,
         "repeated_generations":5
     }
 }
